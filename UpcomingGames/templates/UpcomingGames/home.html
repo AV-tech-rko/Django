@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<nav class="navbar navbar-dark mb-4" style="background-color:black;">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'upgames' %}"><h2><b>Upcoming games</b></h2></a>
+        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        {% if messages %}
+            {% for message in messages%}
+                <div class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+            {% endif %}        
+    </div>
+</nav>
+{% for  list in upgames %}
+
+<p>Title: <b>{{list.title}}</b></p>
+<p>Release: <b>{{list.release_date}}</b></p>
+<img src="{{ list.photo.url}}" >
+
+{% endfor %}

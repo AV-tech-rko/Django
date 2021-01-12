@@ -1,0 +1,164 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<nav class="navbar navbar-dark mb-4" style="background-color:black;">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'list' %}"><b>Ratings</b></a>
+        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        {% if messages %}
+            {% for message in messages%}
+                <div class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+            {% endif %}        
+    </div>
+</nav>
+<style>
+
+    body{
+        background-image: url("/staticfiles/images/1.jpg");
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+    }
+
+    input{
+        width: 100%;
+        padding: 2px 2px;
+        margin: 2px 0;
+        box-sizing: border-box;
+    }
+
+    input::placeholder {
+      color: #d3d3d3;
+    }
+
+    .submit{
+        background-color: #6BA3E8;
+    }
+
+    .center-column{
+        /*width:600px;*/
+        margin: 10px 20px 20px 40px;
+        padding:10px;
+        background-color: #dddddbb8;;
+        border-radius: 3px;
+        box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+    }
+
+    .center-column2{
+        width:200px;
+        margin: 20px 40px;
+        padding:3px;
+        background-color: #dddddbb8;;
+        border-radius: 1px;
+        box-shadow: 4px 2px 30px 0px rgba(0,0,0,0.75);
+    }
+    .center-column3{
+        /*width:300px;*/
+        margin: 10px;
+        padding:5px;
+        background-color: #77815c;;
+        border-radius: 2px;
+        box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+        float : right !important;
+    }
+
+    .item-row{
+         
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 3px;
+        color: #000;
+        font-size: 16px;
+        box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
+    }
+    .g-1{
+        background-image: url("1247823.jpg");
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+
+    }
+    .g-2{
+        background-image: url("1842278.jpg");
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+    }
+
+    .btn-danger{
+        background-color: #ffae19;
+        border-color: #e59400;
+    }
+    .scrollbar{
+        height: 700px;
+        overflow-y: scroll;
+        margin-bottom: 5px;
+    }
+
+    #style-2::-webkit-scrollbar-track{
+        /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+        border-radius: 10px;
+        background-color: #dddddb00;
+    }
+
+    #style-2::-webkit-scrollbar{
+        width: 7px;
+        background-color: #dddddb00;
+    }
+
+    #style-2::-webkit-scrollbar-thumb{
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #396cabb8;
+    }
+    .mg_1{
+        margin:auto;
+    }
+
+</style>
+
+<div class="row">
+<div class="center-column col-md-6">
+
+    <div class="todo-list scrollbar" id="style-2">
+
+    {% for lists in list %}
+        <div class="item-row row">
+            <div class="col-md-7">
+            <a class="btn btn-sm btn-info" href="{% url 'update_task' lists.id %}">Update</a>
+                <p>Title : <b>{{lists.Title}}</b></p>
+                <img src="{{ lists.photo.url}}" > 
+                <p>MyRating : {{lists.MyRating}} | UserRating : {{lists.UserRating}}</p>
+            </div>
+                <div class="col-md-5 mg_1">
+                {{lists.details|linebreaks}}
+                </div>
+       
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="col-md-1"></div>
+<div class="center-column3 col-md-3">
+    <h3><b>Game of the Year Awards</b></h3>
+    <div class="todo-list scrollbar" id="style-2">
+
+    {% for listno in list2 %}
+        <p>Title : <b>{{listno.title}}</b>  </p>
+        <img src="{{ listno.photo.url}}" >    
+        <p>Year : <b>{{listno.year}} | {{listno.publisher}}</b></p>
+    {% endfor %}
+    </div>
+</div>
+</div>
+
+<div class="center-column2">
+    <h5>Upload your games and ratings here</h5>
+
+    <form method="POST" action=" ">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" name ="Create Task" >
+    </form>
+
+</div>

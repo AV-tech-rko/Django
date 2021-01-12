@@ -1,0 +1,318 @@
+<html>
+<title>
+    
+</title>
+<head>
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+/* body{
+        background-image: url("/staticfiles/images/ps2.jpg");
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+    } */
+
+#profile-wrapper{
+    text-align: center;
+}
+
+#profile-pic{
+    width:200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+    #myVideo {
+        position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 800px;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+header {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+header .container {
+  position: relative;
+  z-index: 2;
+    left: 0;
+    width: 100%;
+  
+    display: -webkit-box;
+    display: -ms-flexbox;
+    /* display: flex; */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100vh;
+
+}
+header .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (max-width: 1600px){
+.wrapper-container {
+    padding-bottom: 50px;
+}
+.wrapper-container .contents {
+    margin-bottom: 50px;
+    margin-top: 100px;
+    text-align: center;
+} 
+}
+.wrapper-container .contents p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .40em;
+    text-transform: uppercase;
+    color: #C4C4C4;
+}
+.wrapper-container .contents h1 {
+    font-size: 54px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 15px;
+}
+.mall-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mall-list .mall-list--item:nth-child(1) {
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+.mall-list .mall-list--item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 220px;
+}
+.mall-list .mall-list--item a {
+    display: block;
+}
+.mall-list .mall-list--item .mall-image--wrapper {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 1px solid #FFFFFF;
+    margin: auto;
+    -webkit-transform-origin: bottom center;
+    -ms-transform-origin: bottom center;
+    transform-origin: bottom center;
+}
+.mall-list .mall-list--item .mall-image--wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0,0,0,0);
+    -webkit-transition: all ease-in .20s;
+    -o-transition: all ease-in .20s;
+    transition: all ease-in .20s;
+}
+.mall-list .mall-list--item .mall-image--wrapper span.visit-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-33%,-50%);
+    width: 100%;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0;
+    visibility: hidden;
+}
+.mall-list .mall-list--item .mall-image--wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.mall-list .mall-list--item h3 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 15px 0 5px 0;
+}
+.mall-list .mall-list--item a:hover .mall-image--wrapper {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+a, a:focus, a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    outline: 0;
+    outline-offset: 0;
+    
+}
+.mall-list .mall-list--item a:hover .mall-image--wrapper span.visit-text {
+    opacity: 1;
+    visibility: visible;
+}
+.mall-list .mall-list--item:nth-child(1) {
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    -webkit-transition: all ease-in .20s;
+    -o-transition: all ease-in .20s;
+    transition: all ease-in .20s;
+}
+.mall-list .mall-list--item a:hover .mall-image--wrapper::before {
+    background: rgba(0,0,0,.8);
+    height: 100%;
+}
+
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="overlay"></div>
+    <video autoplay muted loop id="myVideo">
+         <source src="{% static 'images/final-video1.mp4' %}"   type="video/mp4">
+            {% comment %} <source src="final-video1.mp4" type="video/mp4"></source> {% endcomment %}
+        {% comment %} Your browser does not support HTML5 video. {% endcomment %}
+      </video>
+
+      
+      <div class="container h-100">
+
+        <div class="wrapper-container">
+            <div class="contents">
+                <h1 class="animate fadeInUp one">Hi I'm Avinash!</h1>
+                <p class="animate fadeInUp two">Gamer Here(offline only cause i suck at online multiplayer)</p>
+            </div>
+            <ul class="mall-list">
+                <li class="mall-list--item animate fadeIn">
+                    <a  href="{% url 'list' %}">Ratings</a>
+                        <div class="mall-image--wrapper">
+                            <span class="visit-text">Visit Website</span>
+                            <img alt="Ratings" src="{%  static 'images/images1.png' %}">
+                        </div>
+                        <h3>Ratings</h3>
+                    </a>
+                </li>
+                <li class="mall-list--item animate fadeIn">
+                    <a  href="{% url 'pollster:index' %}">Polls</a>
+                        <div class="mall-image--wrapper">
+                            <span class="visit-text">Visit Website</span>
+                            <img alt="Thiruvananthapuram" src="{%  static 'images/canvas-poll-app-icon.jpg' %}">
+                        </div>
+                        <h3>Polls</h3>
+                        <!-- <span class="opening">opening soon</span> -->
+                    </a>
+                </li>
+                <li class="mall-list--item animate fadeIn">
+                    <a  href="{% url 'upgames' %}">Upcoming Games</a>
+                        <div class="mall-image--wrapper">
+                            <span class="visit-text">Visit Website</span>
+                            <img alt="Thiruvananthapuram" src="{%  static 'images/mm.jpg' %}">
+                        </div>
+                        <h3>Lucknow</h3>
+                        <!-- <span class="opening">opening soon</span> -->
+                    </a>
+                </li>
+                {% comment %} <li class="mall-list--item animate fadeIn">
+                    <a  href="{% url 'pollster:index' %}">Polls</a>
+                        <div class="mall-image--wrapper">
+                            <span class="visit-text">Visit Website</span>
+                            <img alt="Thiruvananthapuram" src="{%  static 'images/rdr2v.jpg' %}">>
+                        </div>
+                        <h3>Bengaluru</h3>
+                        <!-- <span class="opening">opening soon</span> -->
+                    </a> {% endcomment %}
+                {% comment %} </li> {% endcomment %}
+            </ul>
+        </div> 
+           
+        </div>
+    
+      
+      
+        
+        <div class="container" >
+            <div  class="row" >
+                <div class="col-md-3" >
+                    <div  class="card card-body" id="profile-wrapper" > 
+                        <img id="profile-pic" src="{%  static 'images/prof.jpg' %}" >
+                        <hr>
+                        <h4> Hi I'm Avinash!</h4>
+                        <p>  Gamer Here(offline only cause i suck at online multiplayer)</p>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        </header>
+</body>
+<script>
+    var video = document.getElementById("myVideo");
+    var btn = document.getElementById("myBtn");
+    
+    function myFunction() {
+      if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+      } else {
+        video.pause();
+        btn.innerHTML = "Play";
+      }
+    }
+    </script>
+</html
